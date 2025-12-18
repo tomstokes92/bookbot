@@ -4,8 +4,6 @@ from character_utils import word_count
 from character_utils import character_count
 from character_utils import sorted_characters
 
-
-
 #check argument input
 if len(sys.argv) < 2 or sys.argv[1] == "":
     print("Usage: python3 main.py <path_to_book>")
@@ -16,9 +14,6 @@ def get_book_text(filepath):
     with open(filepath) as f:
         book_text = f.read()
     return book_text
-
-#convert text to string
-
 
 #define report format
 def report(filepath, num_words, sorted_chars):
