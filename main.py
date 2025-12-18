@@ -1,11 +1,15 @@
-#check argument input
+#imports
 import sys
+from character_utils import word_count
+from character_utils import character_count
+from character_utils import sorted_characters
+
+
+
+#check argument input
 if len(sys.argv) < 2 or sys.argv[1] == "":
     print("Usage: python3 main.py <path_to_book>")
     sys.exit(1)
-
-#set filepath to be input 
-filepath = sys.argv[1]
 
 #read input txt
 def get_book_text(filepath):
@@ -14,20 +18,10 @@ def get_book_text(filepath):
     return book_text
 
 #convert text to string
-def main():
-    book = get_book_text(filepath)
-    return book
 
-book_text = main()
-from stats import word_count
-num_words = word_count(book_text)
-from stats import character_count
-character_counts = character_count(book_text)
-from stats import sorted_characters
-sorted_chars = sorted_characters(character_counts)
 
 #define report format
-def report():
+def report(filepath, num_words, sorted_chars):
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {filepath}...")
     print("----------- Word Count ----------")
@@ -38,4 +32,14 @@ def report():
                 print(f"{item["char"]}: {item["num"]}")
     print("============= END ===============")
 
-report()
+def main():
+    #globals
+    filepath = sys.argv[1]
+    book_text = get_book_text(filepath)    
+    num_words = word_count(book_text)
+    character_counts = character_count(book_text)
+    sorted_chars = sorted_characters(character_counts)
+    report(filepath, num_words, sorted_chars)
+
+if __name__ == "__main__":
+     main()
