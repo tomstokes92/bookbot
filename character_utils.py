@@ -8,7 +8,7 @@ def character_count(text):
         standard = i.lower()
         if standard not in characters:
             characters[standard] = 1
-        elif standard in characters:
+        else:
             characters[standard] += 1
     return characters
 
